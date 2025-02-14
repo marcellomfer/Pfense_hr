@@ -78,8 +78,8 @@ END {
 $(for svc in c-icap clamd dnsmasq dpinger ipsec lightsquid_web ntopng ntpd squid squidGuard sshd syslogd zabbix_agentd; do # Verificar quais serviços estão sendo executados no seu servidor para efetuar o monitoramento
     status=$(/usr/local/sbin/pfSsh.php playback svc status $svc 2>/dev/null | awk 'NR==2' | grep -q "is running" && echo "✅ Ativo" || echo "❌ Inativo")
     if [ "$status" = "❌ Inativo" ]; then
-        /usr/local/sbin/pfSsh.php playback svc stop $svc
-        /usr/local/sbin/pfSsh.php playback svc start $svc
+        /usr/local/sbin/pfSsh.php playback svc stop $svc > /dev/null
+        /usr/local/sbin/pfSsh.php playback svc start $svc > /dev/null
         status="♻ Reiniciado"
     fi
     echo "*$svc:* $status"
