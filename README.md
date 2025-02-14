@@ -1,5 +1,6 @@
 Esse script em Shell Script foi desenvolvido para monitorar um servidor pfSense e enviar um relatório detalhado para um grupo ou canal do Telegram. Além disso, se algum serviço crítico estiver inativo, o script tenta reiniciá-lo automaticamente.
 🔍 O que esse script faz?
+
 1️⃣ Coleta informações do servidor:
 Sistema: Nome do host, versão do pfSense e tempo de atividade.
 CPU: Modelo, número de núcleos e frequência.
@@ -7,9 +8,11 @@ Memória RAM: Total disponível e percentual de uso.
 Disco: Espaço total, usado, disponível e uso da swap.
 Gateway: Status da conexão com a internet (delay, perda de pacotes e substatus).
 Rede: Monitoramento de tráfego das interfaces.
+
 2️⃣ Verifica o status de serviços importantes, como:
 Squid, DNS, VPN, SSH, Syslog, Zabbix, entre outros (você pode personalizar a lista).
 Se um serviço estiver inativo, o script tenta reiniciá-lo automaticamente.
+
 3️⃣ Envia o relatório para um grupo ou canal do Telegram, permitindo monitoramento remoto em tempo real.
 📩 Como funciona o envio para o Telegram?
 O script usa a API do Telegram para enviar mensagens.
