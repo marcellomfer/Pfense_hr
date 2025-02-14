@@ -46,7 +46,7 @@ REPORT="🚀 *Hardware Report - pfSense Server* 🚀
 ⚙ *CPU:*
 -------------------
 $(sysctl -n hw.model)
-*Núcleos:* $(sysctl -n hw.ncpu)
+*Núcleos:* $(sysctl -n hw.ncpu)https://github.com/marcellomfer/Pfense_hr/blob/main/Hardware_Report.sh
 *Frequência:* $(dmesg | grep -m 1 'CPU:' | grep -oE '[0-9]+\.[0-9]+-MHz' | sed 's/-MHz/ MHz/')
 🧠 *Memória RAM:*
 -------------------
@@ -75,7 +75,7 @@ END {
 }')
 🛠 *Status dos Serviços:*
 -------------------
-$(for svc in c-icap clamd dnsmasq dpinger ipsec lightsquid_web ntopng ntpd squid squidGuard sshd syslogd zabbix_agentd zabbix_agentd_lts; do # Verificar quais serviços estão sendo executados no seu servidor para efetuar o monitoramento
+$(for svc in c-icap clamd dnsmasq dpinger ipsec lightsquid_web ntopng ntpd squid squidGuard sshd syslogd zabbix_agentd; do # Verificar quais serviços estão sendo executados no seu servidor para efetuar o monitoramento
     status=$(/usr/local/sbin/pfSsh.php playback svc status $svc 2>/dev/null | awk 'NR==2' | grep -q "is running" && echo "✅ Ativo" || echo "❌ Inativo")
     if [ "$status" = "❌ Inativo" ]; then
         /usr/local/sbin/pfSsh.php playback svc stop $svc
